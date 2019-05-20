@@ -46,16 +46,14 @@ namespace RONC.IntegrationTest
         private static string GetGeckoDriverName()
         {
             var remoteFileName = Environment.GetEnvironmentVariable("TravisWebDriver");
+            var driverName = "geckodrivermac";
+            
             if (remoteFileName != null)
             {
-                 fileName = remoteFileName;
-            }
-            else
-            {
-                fileName = "geckodrivermac";
+                driverName = remoteFileName;
             }
 
-            return fileName;
+            return driverName;
         }
     }
 }
