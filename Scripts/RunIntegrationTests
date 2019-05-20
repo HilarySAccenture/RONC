@@ -4,7 +4,7 @@ cd ..
 docker build -t latest .
 docker run -d -p 8000:80 --name RONCDocker latest 
 
-cd ./RONC.IntegrationTests
+cd ./RONC.IntegrationTest
 ./RunTests
 
 
