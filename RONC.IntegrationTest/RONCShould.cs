@@ -49,7 +49,7 @@ namespace RONC.IntegrationTest
                 driver.Quit();
             }
 
-            result.ShouldContain("cat");
+            result.ShouldContain("hello world");
         }
 
         private static string GetGeckoDriverName()
