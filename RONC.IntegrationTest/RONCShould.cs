@@ -10,7 +10,7 @@ namespace RONC.IntegrationTest
 {
     public class RONCShould
     {
-        private static string fileName = GetGeckoDriverName();
+        private static string _fileName = GetGeckoDriverName();
         private readonly ITestOutputHelper output;
 
         public RONCShould(ITestOutputHelper output)
@@ -25,9 +25,9 @@ namespace RONC.IntegrationTest
             var currentDirectory = Environment.CurrentDirectory;
             var options = new FirefoxOptions();
             options.AddArgument("--headless");
-            Console.WriteLine($"this is the {fileName}");
+            Console.WriteLine($"this is the {_fileName}");
             
-            var service = FirefoxDriverService.CreateDefaultService(currentDirectory, fileName);
+            var service = FirefoxDriverService.CreateDefaultService(currentDirectory, _fileName);
             var driver = new FirefoxDriver(service, options);
 
             var result = string.Empty;
