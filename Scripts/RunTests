@@ -1,5 +1,4 @@
 #!/bin/bash -ue
 
-cd ./RONC.IntegrationTest
+cd ../RONC.IntegrationTest
 dotnet test 
-
