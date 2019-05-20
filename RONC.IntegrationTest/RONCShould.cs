@@ -4,12 +4,20 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using Shouldly;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace RONC.IntegrationTest
 {
     public class RONCShould
     {
         private static string fileName = GetGeckoDriverName();
+        private readonly ITestOutputHelper output;
+
+        public RONCShould(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
+
 
         [Fact]
         public void DisplayExpectedText()
@@ -17,7 +25,8 @@ namespace RONC.IntegrationTest
             var currentDirectory = Environment.CurrentDirectory;
             var options = new FirefoxOptions();
             options.AddArgument("--headless");
-               
+            Console.WriteLine($"this is the {fileName}");
+            
             var service = FirefoxDriverService.CreateDefaultService(currentDirectory, fileName);
             var driver = new FirefoxDriver(service, options);
 
