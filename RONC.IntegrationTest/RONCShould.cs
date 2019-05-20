@@ -23,7 +23,7 @@ namespace RONC.IntegrationTest
             
             try
             {
-                driver.Navigate().GoToUrl("http://localhost:5000");
+                driver.Navigate().GoToUrl("http://localhost:8000");
                 var page = driver.FindElementByTagName("pre");
 
                 result = page.Text;
