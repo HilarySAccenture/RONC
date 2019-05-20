@@ -4,8 +4,8 @@ cd ..
 docker build -t latest .
 docker run -d -p 8000:80 --name RONCDocker latest 
 
-cd ./RONC.IntegrationTest
-dotnet test 
+cd ./RONC.IntegrationTests
+./RunTests
 
 
 docker stop RONCDocker 
