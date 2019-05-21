@@ -23,3 +23,4 @@ deploy:
   provider: heroku
   api_key: 
     secure: $herokuAPI
+  app: sand-box-magic
