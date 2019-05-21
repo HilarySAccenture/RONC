@@ -20,4 +20,4 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
 WORKDIR /app
 COPY --from=build /app/MVCApp/out ./
-ENTRYPOINT ["dotnet", "RONC.dll"]
+CMD ["dotnet", "RONC.dll"]

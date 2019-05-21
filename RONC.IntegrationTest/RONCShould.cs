@@ -42,7 +42,7 @@ namespace RONC.IntegrationTest
                 driver.Quit();
             }
 
-            result.ShouldContain("hello world");
+            result.ShouldContain("Hello World! The API Key Is In Env Variables: true");
         }
 
         private static string GetGeckoDriverName()

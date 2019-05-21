@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RONC", "RONC\RONC.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RONC.IntegrationTest", "RONC.IntegrationTest\RONC.IntegrationTest.csproj", "{FF81AA23-EDA6-4075-9FF2-5572AA7A598E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RONC.UnitTest", "RONC.UnitTest\RONC.UnitTest.csproj", "{B6CA0AFC-BC71-4997-AF9E-933B9D995572}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{FF81AA23-EDA6-4075-9FF2-5572AA7A598E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF81AA23-EDA6-4075-9FF2-5572AA7A598E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF81AA23-EDA6-4075-9FF2-5572AA7A598E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6CA0AFC-BC71-4997-AF9E-933B9D995572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6CA0AFC-BC71-4997-AF9E-933B9D995572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6CA0AFC-BC71-4997-AF9E-933B9D995572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6CA0AFC-BC71-4997-AF9E-933B9D995572}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
