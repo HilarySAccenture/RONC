@@ -1,5 +1,7 @@
 #!/bin/bash -ue
 
 cd ..
+echo "$NEWS_API_KEY"
+echo NEWS_API_KEY
 docker build -t latest .
-docker run -d -e NEWS_API_KEY=$NEWS_API_KEY -p 8000:80 --name RONCDocker latest 
+docker run -d -e NEWS_API_KEY -p 8000:80 --name RONCDocker latest 
