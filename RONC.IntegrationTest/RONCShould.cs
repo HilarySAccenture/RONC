@@ -55,7 +55,6 @@ namespace RONC.IntegrationTest
             {
                 driverName = remoteFileName;
             }
-
             return driverName;
         }
     }
