@@ -44,7 +44,7 @@ namespace RONC.IntegrationTest
             }
 
             Console.WriteLine(result);
-            result.ShouldContain("Hello World! The API Key Is In Env Variables: true");
+            result.ShouldContain("Hello World! Is the API Key Null Or Empty: false");
         }
 
         private static string GetGeckoDriverName()

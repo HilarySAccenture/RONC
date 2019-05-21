@@ -31,30 +31,22 @@ namespace RONC
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             var newsApiKeyIsNull = string.IsNullOrEmpty(_newsApiKey);
-            var weAssignedTheEnvVarInStartup = false;
             
             if (_newsApiKey != null)
             {
                 Environment.SetEnvironmentVariable("NEWS_API_KEY", _newsApiKey);
             }
             
-            var geckothing = Environment.GetEnvironmentVariable("TravisWebDriver");
-            
-            var envVar = Environment.GetEnvironmentVariable("NEWS_API_KEY");
+            var apiKey = Environment.GetEnvironmentVariable("NEWS_API_KEY");
 
-            var envVarIsNullOrEmpty = string.IsNullOrEmpty(envVar);
-            
+            var apiKeyIsNullOrEmpty = string.IsNullOrEmpty(apiKey);
             
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) => { await context.Response.WriteAsync($"Hello World! The _newsApiKey is Null/Empty: {newsApiKeyIsNull}. " +
-                                                                           $"We set the env var in startup: {weAssignedTheEnvVarInStartup}." +
-                                                                           $"The envVar is: {envVar}" +
-                                                                           $"The envVar is null/empty: {envVarIsNullOrEmpty}" +
-                                                                           $"But GeckoThing is: {geckothing}");});
+            app.Run(async (context) => { await context.Response.WriteAsync($"Hello World! Is the API Key Null Or Empty: {apiKeyIsNullOrEmpty}");});
         }
     }
 }
