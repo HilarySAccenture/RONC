@@ -38,7 +38,11 @@ namespace RONC
                 Environment.SetEnvironmentVariable("NEWS_API_KEY", _newsApiKey);
             }
 
+<<<<<<< HEAD
             var geckothing = Environment.GetEnvironmentVariable("TravisWebDriver");
+=======
+            var geckothing = Environment.GetEnvironmentVariable("GeckoDriverName");
+>>>>>>> ab3143ef23c5fbe49ede4acd0b22ac3ddd0638ce
             var envVar = Environment.GetEnvironmentVariable("NEWS_API_KEY");
 
             var envVarIsNullOrEmpty = string.IsNullOrEmpty(envVar);
