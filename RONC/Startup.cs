@@ -30,12 +30,17 @@ namespace RONC
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            var newsApiKeyIsNull = string.IsNullOrEmpty(_newsApiKey);
+            var weAssignedTheEnvVarInStartup = false;
+            
             if (_newsApiKey != null)
             {
                 Environment.SetEnvironmentVariable("NEWS_API_KEY", _newsApiKey);
             }
 
-            var result = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("NEWS_API_KEY"));
+            var envVar = Environment.GetEnvironmentVariable("NEWS_API_KEY");
+
+            var envVarIsNullOrEmpty = string.IsNullOrEmpty(envVar);
             
             
             if (env.IsDevelopment())
@@ -43,7 +48,10 @@ namespace RONC
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) => { await context.Response.WriteAsync($"Hello World! The API Key Is In Env Variables: {result}");});
+            app.Run(async (context) => { await context.Response.WriteAsync($"Hello World! The _newsApiKey is Null/Empty: {newsApiKeyIsNull}. " +
+                                                                           $"We set the env var in startup: {weAssignedTheEnvVarInStartup}." +
+                                                                           $"The envVar is: {envVar}" +
+                                                                           $"The envVar is null/empty: {envVarIsNullOrEmpty}");});
         }
     }
 }
