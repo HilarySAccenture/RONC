@@ -11,13 +11,6 @@ namespace RONC.IntegrationTest
     public class RONCShould
     {
         private static string _fileName = GetGeckoDriverName();
-        private readonly ITestOutputHelper output;
-
-        public RONCShould(ITestOutputHelper output)
-        {
-            this.output = output;
-        }
-
 
         [Fact]
         public void DisplayExpectedText()
