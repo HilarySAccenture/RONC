@@ -43,6 +43,7 @@ namespace RONC.IntegrationTest
                 driver.Quit();
             }
 
+            Console.WriteLine(result);
             result.ShouldContain("Hello World! The API Key Is In Env Variables: true");
         }
 
