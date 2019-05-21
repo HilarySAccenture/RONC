@@ -19,6 +19,7 @@ namespace RONC.IntegrationTest
             var options = new FirefoxOptions();
             options.AddArgument("--headless");
             Console.WriteLine($"this is the {_fileName}");
+            Console.WriteLine(Environment.GetEnvironmentVariable("NEWS_API_KEY"));
             
             var service = FirefoxDriverService.CreateDefaultService(currentDirectory, _fileName);
             var driver = new FirefoxDriver(service, options);
