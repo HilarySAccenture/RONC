@@ -36,6 +36,7 @@ namespace RONC
             }
 
             var result = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("NEWS_API_KEY"));
+            Console.WriteLine(Environment.GetEnvironmentVariable("NEWS_API_KEY"));
             
             if (env.IsDevelopment())
             {
