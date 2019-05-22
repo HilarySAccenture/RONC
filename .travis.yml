@@ -16,9 +16,9 @@ script: # These commands are executed in the Travis VM just like you would on yo
   #- ./Scripts/frontEndBuildTest
   #- ./Scripts/integrationBuildTest
   - cd /home/travis/build/HilarySAccenture/RONC/Scripts/
-  - ./StartDocker
+  #- ./StartDocker
   - ./RunUnitTests
-  - ./RunIntegrationTests
-  - ./StopDocker
-deploy:
-  provider: azure_web_apps
+  #- ./RunIntegrationTests
+  #- ./StopDocker
+#deploy:
+  #provider: azure_web_apps
