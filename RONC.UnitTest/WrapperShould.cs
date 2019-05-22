@@ -12,7 +12,7 @@ namespace RONC.UnitTest
         {
             var wrapper = new ApiWrapper();
             
-            wrapper.ShouldNotBeNull();
+            wrapper.ShouldBeNull();
             
             
         }

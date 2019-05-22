@@ -8,15 +8,8 @@ dist: xenial
 # Your SDK version, not your run-time version
 dotnet: 2.2
 script: # These commands are executed in the Travis VM just like you would on your local machine
-  # Use a "cd" command to move the Travis command line prompt into your solution directory
-  # - cd /home/travis/build/<yourTravisAccount>/<yourRepoRootDirectory>/.../<yourSolutionDirectory>/
-  # Use these to build the project without tests
-  # if your project has tests, you can skip "restore" and "build" and just use "test" command
-  #- ./Scripts/backEndBuildTest
-  #- ./Scripts/frontEndBuildTest
-  #- ./Scripts/integrationBuildTest
   - cd /home/travis/build/HilarySAccenture/RONC/Scripts/
   - ./RunAllTests
   - ./CleanUp
-#deploy:
-  #provider: azure_web_apps
+deploy:
+  provider: azure_web_apps
