@@ -18,7 +18,10 @@ namespace RONC.UnitTest
             FirefoxDriver driver = null;
             try
             {
-                driver = new FirefoxDriver();
+                var options = new FirefoxOptions();
+                options.AddArgument("--headless");
+                driver = new FirefoxDriver(options);
+                
                 driver.Navigate().GoToUrl("http://localhost:5000/home/index");
 
                 pCount = driver.FindElementsByTagName("p").Count;
@@ -33,7 +36,8 @@ namespace RONC.UnitTest
             }
              
             pCount.ShouldBe(1);
-            
         }
+        
+        
     }
 }
