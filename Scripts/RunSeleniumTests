@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cd ../RONC/
+dotnet build RONC.csproj
+
+cd ./bin/Debug/netcoreapp2.2
+nohup dotnet RONC.dll > dotnetcore.log &
+
+cd ../../../../RONC.UnitTest/
+dotnet test
+
+kill $(ps aux | grep '[R]ONC.dll' | awk '{print $2}')

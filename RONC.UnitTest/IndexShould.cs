@@ -9,8 +9,6 @@ namespace RONC.UnitTest
 {
     public class IndexShould
     {
-        
-        
         [Fact]
         public void RenderAParagraphTag()
         {
@@ -19,13 +17,40 @@ namespace RONC.UnitTest
             try
             {
                 var options = new FirefoxOptions();
-                options.AddArgument("--headless");
-                driver = new FirefoxDriver(options);
-                
+               // options.AddArgument("--headless");
+                driver = new FirefoxDriver();
+
                 driver.Navigate().GoToUrl("http://localhost:5000/home/index");
 
                 pCount = driver.FindElementsByTagName("p").Count;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                driver.Quit();
+            }
 
+            pCount.ShouldBe(1);
+        }
+
+        [Fact]
+        public void RenderCorrectTextInParagraphTag()
+        {
+            var pText = string.Empty;
+            FirefoxDriver driver = null;
+
+            try
+            {
+                var options = new FirefoxOptions();
+                options.AddArgument("--headless");
+                driver = new FirefoxDriver(options);
+
+                driver.Navigate().GoToUrl("http://localhost:5000/home/index");
+
+                pText = driver.FindElementByTagName("p").Text;
             }
             catch (Exception ex)
             {
@@ -34,10 +59,7 @@ namespace RONC.UnitTest
             {
                 driver.Quit();
             }
-             
-            pCount.ShouldBe(1);
+            pText.ShouldBe("Hello World!");
         }
-        
-        
     }
 }
