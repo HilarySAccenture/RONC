@@ -19,6 +19,6 @@ script: # These commands are executed in the Travis VM just like you would on yo
   #- ./StartDocker
   - ./RunUnitTests
   #- ./RunIntegrationTests
-  - ./StopDocker
+  - ./CleanUp
 #deploy:
   #provider: azure_web_apps
