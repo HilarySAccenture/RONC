@@ -9,8 +9,19 @@ namespace RONC.Domain
         public List<Article> Convert(string testString)
         {
             var articleWrapper = JsonConvert.DeserializeObject<ArticleWrapper>(testString);
-            
-            return articleWrapper.Articles;
+
+            if (articleWrapper.Status == "ok")
+            {
+                return articleWrapper.Articles;
+            }
+
+            return new List<Article>
+            {
+                new Article
+                {
+                    Error = new Error() 
+                } 
+            };
         }
     }
 }
