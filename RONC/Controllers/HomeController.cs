@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace RONC
+namespace RONC.Controllers
 {
     public class HomeController : Controller
     {

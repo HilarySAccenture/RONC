@@ -21,4 +21,8 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\RONC\RONC.csproj" />
+    </ItemGroup>
+
 </Project>

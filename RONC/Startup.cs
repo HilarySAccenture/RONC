@@ -33,16 +33,12 @@ namespace RONC
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            var newsApiKeyIsNull = string.IsNullOrEmpty(_newsApiKey);
-            
             if (_newsApiKey != null)
             {
                 Environment.SetEnvironmentVariable("NEWS_API_KEY", _newsApiKey);
             }
             
             var apiKey = Environment.GetEnvironmentVariable("NEWS_API_KEY");
-
-            var apiKeyIsNullOrEmpty = string.IsNullOrEmpty(apiKey);
             
             if (env.IsDevelopment())
             {
@@ -55,9 +51,6 @@ namespace RONC
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            
-            //app.Run(async (context) => { await context.Response.WriteAsync($"Hello World! Is the API Key Null Or Empty: {apiKeyIsNullOrEmpty}");});
-           // app.Run();
         }
     }
 }

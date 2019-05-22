@@ -29,9 +29,9 @@ namespace RONC.IntegrationTest
             try
             {
                 driver.Navigate().GoToUrl("http://localhost:8000");
-                var page = driver.FindElementByTagName("pre");
+                var pElement = driver.FindElementByTagName("p");
 
-                result = page.Text;
+                result = pElement.Text;
                 
             }
             catch (WebDriverException wde)
@@ -44,7 +44,7 @@ namespace RONC.IntegrationTest
             }
 
             Console.WriteLine(result);
-            result.ShouldContain("Hello World! Is the API Key Null Or Empty: false");
+            result.ShouldContain("Hello World!");
         }
 
         private static string GetGeckoDriverName()

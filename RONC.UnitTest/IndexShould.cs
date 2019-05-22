@@ -1,9 +1,7 @@
 using System;
 using Xunit;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using Shouldly;
-using Xunit.Sdk;
 
 namespace RONC.UnitTest
 {
@@ -17,8 +15,8 @@ namespace RONC.UnitTest
             try
             {
                 var options = new FirefoxOptions();
-               // options.AddArgument("--headless");
-                driver = new FirefoxDriver();
+                options.AddArgument("--headless");
+                driver = new FirefoxDriver(options);
 
                 driver.Navigate().GoToUrl("http://localhost:5000/home/index");
 
