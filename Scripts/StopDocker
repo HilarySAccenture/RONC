@@ -1,4 +1,5 @@
 #!/bin/bash -ue
 
+kill $(ps aux | grep '[R]ONC.dll' | awk '{print $2}')
 docker stop RONCDocker 
 docker rm RONCDocker

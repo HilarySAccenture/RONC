@@ -25,4 +25,13 @@
       <ProjectReference Include="..\RONC\RONC.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="geckodriverlinux2">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="geckodrivermac">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
