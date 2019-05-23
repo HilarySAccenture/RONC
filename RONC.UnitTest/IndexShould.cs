@@ -79,5 +79,30 @@ namespace RONC.UnitTest
             }
             pText.ShouldBe("Hello World!");
         }
+
+        [Fact]
+        public void RenderAButton()
+        {
+            var buttonText = string.Empty;
+            FirefoxDriver driver = null;
+
+            try
+            {
+                driver = CreateFireFoxDriver();
+
+                driver.Navigate().GoToUrl("http://localhost:5000/home/index");
+
+                buttonText = driver.FindElementById("btnGetArticle").Text;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                driver.Quit();
+            }
+            
+            buttonText.ShouldBe("Get Article");
+        }
     }
 }
