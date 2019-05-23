@@ -9,5 +9,10 @@ namespace RONC.Domain.DataObject
         {
             Error = new Error(errorMessage);
         }
+
+        public ApiDataResponse()
+        {
+            
+        }
     }
 }

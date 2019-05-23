@@ -4,7 +4,7 @@ using RONC.Domain.DataObject;
 
 namespace RONC.Domain
 {
-    public class ArticleDeserializer
+    public class ArticleDeserializer : IArticleDeserializer
     {
         public List<ApiDataResponse> Convert(string testString)
         {
