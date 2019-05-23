@@ -20,7 +20,7 @@ namespace RONC.Domain
 
             var deserializedResult = _deserializer.Convert(resultString);
             
-            return new ArticleDomainModel { ApiCallResultValue = resultString, DeserializedResult = deserializedResult };
+            return new ArticleDomainModel { DeserializedResult = deserializedResult };
         }
     }
 }

@@ -12,7 +12,7 @@ namespace RONC.UnitTest
     {
         private IApiCaller mockCaller = Substitute.For<IApiCaller>();
         private IArticleDeserializer mockDeserializer = Substitute.For<IArticleDeserializer>();
-        
+
         [Fact]
         public void ReturnAnArticleDomainModel()
         {
@@ -21,17 +21,6 @@ namespace RONC.UnitTest
             var result = service.GetArticle();
 
             result.ShouldBeOfType<ArticleDomainModel>();
-        }
-
-        [Fact]
-        public void ReturnDomainModelWithValue()
-        {
-            mockCaller.GetArticlesAsJson().Returns("I am a value oh yes");
-            var service = new NewsService(mockCaller, mockDeserializer);
-
-            var result = service.GetArticle();
-
-            result.ApiCallResultValue.ShouldContain("a value");
         }
 
         [Fact]
@@ -45,6 +34,5 @@ namespace RONC.UnitTest
 
             result.DeserializedResult.ShouldBeOfType<List<ApiDataResponse>>();
         }
-        
     }
 }
