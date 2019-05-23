@@ -6,7 +6,7 @@ namespace RONC.Domain
 {
     public class ArticleDeserializer
     {
-        public List<Article> Convert(string testString)
+        public List<ApiDataResponse> Convert(string testString)
         {
             var articleWrapper = JsonConvert.DeserializeObject<ArticleWrapper>(testString);
 
@@ -18,11 +18,11 @@ namespace RONC.Domain
             return CreateErrorArticle(articleWrapper.Message);
         }
 
-        private static List<Article> CreateErrorArticle(string errorMessage)
+        private static List<ApiDataResponse> CreateErrorArticle(string errorMessage)
         {
-            return new List<Article>
+            return new List<ApiDataResponse>
             {
-                new Article(errorMessage)
+                new ApiDataResponse(errorMessage)
             };
         }
     }
