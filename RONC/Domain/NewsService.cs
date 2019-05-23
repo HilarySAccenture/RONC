@@ -20,7 +20,18 @@ namespace RONC.Domain
 
             var deserializedResult = _deserializer.Convert(resultString);
             
-            return new ArticleDomainModel { DeserializedResult = deserializedResult };
+            var articleDomainModel = new ArticleDomainModel();
+
+            if (deserializedResult == null || deserializedResult.Count == 0)
+            {
+                
+            }
+            else
+            {
+                articleDomainModel.Title = deserializedResult[0].Title;
+            }
+            
+            return articleDomainModel;
         }
     }
 }

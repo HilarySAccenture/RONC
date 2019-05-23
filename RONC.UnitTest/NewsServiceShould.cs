@@ -24,15 +24,15 @@ namespace RONC.UnitTest
         }
 
         [Fact]
-        public void ReturnDomainModelWithDeserializedApiReturn()
+        public void ReturnDomainModelWithCorrectTitle()
         {
             var mockApiReturn = new ApiDataResponse {Title = "Bob"};
             mockDeserializer.Convert(Arg.Any<string>()).Returns(new List<ApiDataResponse> {mockApiReturn});
-            var service = new NewsService(mockCaller, mockDeserializer);
-
+            var service = new NewsService(mockCaller, mockDeserializer); 
+            
             var result = service.GetArticle();
 
-            result.DeserializedResult.ShouldBeOfType<List<ApiDataResponse>>();
+            result.Title.ShouldBe("Bob");
         }
     }
 }
