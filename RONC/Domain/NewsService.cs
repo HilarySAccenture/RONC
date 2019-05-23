@@ -22,15 +22,11 @@ namespace RONC.Domain
             
             var articleDomainModel = new ArticleDomainModel();
 
-            if (deserializedResult == null || deserializedResult.Count == 0)
-            {
-                
-            }
-            else
+            if (deserializedResult != null && deserializedResult.Count > 0)
             {
                 articleDomainModel.Title = deserializedResult[0].Title;
             }
-            
+
             return articleDomainModel;
         }
     }
