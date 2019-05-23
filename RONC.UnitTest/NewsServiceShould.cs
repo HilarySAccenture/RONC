@@ -23,7 +23,7 @@ namespace RONC.UnitTest
         }
 
         [Fact]
-        public void ReturnDomainModelWithValueThatsNotNull()
+        public void ReturnDomainModelWithValue()
         {
             var mockCaller = Substitute.For<IApiCaller>();
             mockCaller.GetArticlesAsJson().Returns("I am a value oh yes");
@@ -31,7 +31,7 @@ namespace RONC.UnitTest
 
             var result = service.GetArticle();
 
-            result.ApiCallResultValue.ShouldNotBeNullOrEmpty();
+            result.ApiCallResultValue.ShouldContain("a value");
         }
         
     }
