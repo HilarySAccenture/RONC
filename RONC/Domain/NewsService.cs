@@ -4,9 +4,18 @@ namespace RONC.Domain
 {
     public class NewsService
     {
+        private IApiCaller _caller;
+
+        public NewsService(IApiCaller caller)
+        {
+            _caller = caller;
+        }
+        
         public ArticleDomainModel GetArticle()
         {
-            return new ArticleDomainModel();
+            var resultString = _caller.GetArticlesAsJson();
+            
+            return new ArticleDomainModel { ApiCallResultValue = resultString };
         }
     }
 }
