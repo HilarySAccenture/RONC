@@ -13,3 +13,4 @@ script: # These commands are executed in the Travis VM just like you would on yo
   - ./CleanUp
 deploy:
   provider: azure_web_apps
+  skip_cleanup: true
