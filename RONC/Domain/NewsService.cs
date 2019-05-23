@@ -30,23 +30,17 @@ namespace RONC.Domain
 
         private ArticleDomainModel CreateArticleDomainModel(List<ApiDataResponse> deserializedResult)
         {
-            var articleDomainModel = new ArticleDomainModel();
-
-            if (deserializedResult != null && deserializedResult.Count > 0)
-            {
-                if (deserializedResult[0].Error != null)
-                {
-                    throw new Exception(deserializedResult[0].Error.Message);
-                }
-
-                articleDomainModel.Title = deserializedResult[0].Title;
-            }
-            else
+            if (deserializedResult == null || deserializedResult.Count == 0)
             {
                 throw new Exception("Response was null or empty");
             }
 
-            return articleDomainModel;
+            if (deserializedResult[0].Error != null)
+            {
+                throw new Exception(deserializedResult[0].Error.Message);
+            }
+            
+            return new ArticleDomainModel { Title = deserializedResult[0].Title };
         }
     }
 }
