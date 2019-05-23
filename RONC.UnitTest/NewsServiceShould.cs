@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NSubstitute;
 using RONC.Domain;
@@ -33,6 +34,17 @@ namespace RONC.UnitTest
             var result = service.GetArticle();
 
             result.Title.ShouldBe("Bob");
+        }
+
+        [Fact]
+        public void ThrowExceptionWithErrorMessageWhenApiDataResponseHasAnError()
+        {
+            var mockApiReturn = new ApiDataResponse("error");
+            mockDeserializer.Convert(Arg.Any<string>()).Returns(new List<ApiDataResponse> {mockApiReturn});
+            var service = new NewsService(mockCaller, mockDeserializer); 
+            
+            Should.Throw<Exception>(() => service.GetArticle()).Message.ShouldBe("error");
+            
         }
     }
 }
