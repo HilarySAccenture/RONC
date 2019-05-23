@@ -5,7 +5,7 @@ namespace RONC.Domain
 {
     public class ApiCaller :IApiCaller
     {
-        private RestClient _client;
+        private IRestClient _client;
         private string _apiKey;
         public ApiCaller()
         { 
@@ -13,12 +13,18 @@ namespace RONC.Domain
             _apiKey = Environment.GetEnvironmentVariable("NEWS_API_KEY");
         }
         
+        public ApiCaller(IRestClient client, string apiKey)
+        { 
+            _client = client; 
+            _apiKey = apiKey;
+        }
+        
+        
         public string GetArticlesAsJson()
         {
             var request = CreateRestRequest();
 
             var response = _client.Execute(request);
-
             return response.Content;
         }
 
