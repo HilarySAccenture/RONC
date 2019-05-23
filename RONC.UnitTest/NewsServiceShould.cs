@@ -13,17 +13,7 @@ namespace RONC.UnitTest
     {
         private IApiCaller mockCaller = Substitute.For<IApiCaller>();
         private IArticleDeserializer mockDeserializer = Substitute.For<IArticleDeserializer>();
-
-        [Fact]
-        public void ReturnAnArticleDomainModel()
-        {
-            var service = new NewsService(mockCaller, mockDeserializer);
-
-            var result = service.GetArticle();
-
-            result.ShouldBeOfType<ArticleDomainModel>();
-        }
-
+        
         [Fact]
         public void ReturnDomainModelWithCorrectTitle()
         {
@@ -41,10 +31,18 @@ namespace RONC.UnitTest
         {
             var mockApiReturn = new ApiDataResponse("error");
             mockDeserializer.Convert(Arg.Any<string>()).Returns(new List<ApiDataResponse> {mockApiReturn});
-            var service = new NewsService(mockCaller, mockDeserializer); 
-            
+            var service = new NewsService(mockCaller, mockDeserializer);
+
             Should.Throw<Exception>(() => service.GetArticle()).Message.ShouldBe("error");
-            
+        }
+
+        [Fact]
+        public void ThrowExceptionIfApiDataResponseIsEmpty()
+        {
+            mockDeserializer.Convert(Arg.Any<string>()).Returns(new List<ApiDataResponse>());
+            var service = new NewsService(mockCaller, mockDeserializer);
+
+            Should.Throw<Exception>(() => service.GetArticle()).Message.ShouldBe("Response was null or empty");
         }
     }
 }
