@@ -15,12 +15,14 @@ namespace RONC.Domain
                 return articleWrapper.Articles;
             }
 
+            return CreateErrorArticle(articleWrapper.Message);
+        }
+
+        private static List<Article> CreateErrorArticle(string errorMessage)
+        {
             return new List<Article>
             {
-                new Article
-                {
-                    Error = new Error() 
-                } 
+                new Article(errorMessage)
             };
         }
     }

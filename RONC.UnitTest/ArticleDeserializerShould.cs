@@ -8,6 +8,8 @@ namespace RONC.UnitTest
 {
     public class ArticleDeserializerShould
     {
+        string errorString =
+            @"{""status"":""error"",""code"":""apiKeyMissing"",""message"":""Your API key is missing. Append this to the URL with the apiKey param, or use the x-api-key HTTP header.""}";
         [Fact]
         public void ReturnValidAndStatusOkJsonStringAsPOCO()
         {
@@ -34,24 +36,15 @@ namespace RONC.UnitTest
 
             result[0].Title.ShouldBe(expectedTitle);
         } 
-        
+
         [Fact]
-        public void ReturnsArticleWithErrorIfStatusIsNotOk()
+        public void ReturnsArticleWithErrorMessageIfStatusNotOk()
         {
             var deserializer = new ArticleDeserializer();
-            
-            var testString =
-                @"{""status"":""error"",""code"":""apiKeyMissing"",""message"":""Your API key is missing. Append this to the URL with the apiKey param, or use the x-api-key HTTP header.""}";
-            
-            var result = deserializer.Convert(testString);
 
-            result[0].Error.ShouldNotBeNull();
-        }
-
-        [Fact]
-        public void ReturnsArticleWithErrorCodeIfStatusNotOk()
-        {
+            var result = deserializer.Convert(errorString);
             
+            result[0].Error.Message.ShouldContain("Your API key is missing");
         }
         
     }

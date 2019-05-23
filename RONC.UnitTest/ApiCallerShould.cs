@@ -37,9 +37,7 @@ namespace RONC.UnitTest
         public void ReturnStringErrorWhenGetArticlesAsJsonCalledAndNoApiKey()
         {
             string _apiKey = null;
-            
             var _client = Substitute.For<IRestClient>();
-            
             var caller = new ApiCaller(_client, _apiKey);
 
             var response = caller.GetArticlesAsJson();
