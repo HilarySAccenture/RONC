@@ -8,30 +8,31 @@ namespace RONC.UnitTest
 {
     public class IndexShould
     {
-        private string _geckoDriver = GetGeckoDriverName();
-        
-        private static string GetGeckoDriverName()
+        private static string _geckoDriver = GetGeckoDriverName();
+
+        public static string GetGeckoDriverName()
         {
             var remoteFileName = Environment.GetEnvironmentVariable("TravisWebDriver");
             var driverName = "geckodrivermac";
-            
+
             if (remoteFileName != null)
             {
                 driverName = remoteFileName;
             }
+
             return driverName;
         }
-        
-        private FirefoxDriver CreateFireFoxDriver()
+
+        public static FirefoxDriver CreateFireFoxDriver()
         {
             var service = FirefoxDriverService.CreateDefaultService(
-            Environment.CurrentDirectory, 
-            _geckoDriver);
+                Environment.CurrentDirectory,
+                _geckoDriver);
             var options = new FirefoxOptions();
             options.AddArgument("--headless");
             return new FirefoxDriver(service, options);
         }
-        
+
         [Fact]
         public void RenderAParagraphTag()
         {
@@ -78,6 +79,7 @@ namespace RONC.UnitTest
             {
                 driver.Quit();
             }
+
             pText.ShouldBe("Hello World!");
         }
 
@@ -102,7 +104,7 @@ namespace RONC.UnitTest
             {
                 driver.Quit();
             }
-            
+
             buttonText.ShouldBe("Get Article");
         }
 
@@ -111,7 +113,7 @@ namespace RONC.UnitTest
         {
             FirefoxDriver driver = null;
             var page = string.Empty;
-            
+
             try
             {
                 driver = CreateFireFoxDriver();
@@ -129,8 +131,8 @@ namespace RONC.UnitTest
             {
                 driver.Quit();
             }
+
             page.ShouldContain("article");
-            
         }
     }
 }

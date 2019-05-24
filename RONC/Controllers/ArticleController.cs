@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using RONC.Domain.Models;
+using RONC.Models;
 
 namespace RONC.Controllers
 {
@@ -6,7 +8,12 @@ namespace RONC.Controllers
     {
         public IActionResult GetArticle()
         {
-            return View("Article");
+            // get view model from service
+            // turn into a view model
+            
+            var model = new ArticleViewModel { Title = "Article for you"};
+            
+            return View("Article", model);
         }
     }
 }
