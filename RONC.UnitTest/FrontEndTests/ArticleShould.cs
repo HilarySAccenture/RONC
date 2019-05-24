@@ -59,5 +59,28 @@ namespace RONC.UnitTest.FrontEndTests
             
             title.ShouldNotBeNullOrEmpty();
         }
+
+        [Fact]
+        public void DisplayAttributionLinkToNewsApi()
+        {
+            driver = CreateFireFoxDriver();
+            var attribute = string.Empty;
+            try
+            {
+                driver.Navigate().GoToUrl("http://localhost:5000/article/getarticle");
+
+                attribute = driver.FindElementById("apiAttribute").Text;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                driver.Quit();
+            }
+            
+            attribute.ShouldContain("NewsApi.org");
+        }
     }
 }
