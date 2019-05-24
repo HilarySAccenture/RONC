@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using RONC.Domain;
 using RONC.Domain.Models;
 using RONC.Models;
 
@@ -8,10 +9,11 @@ namespace RONC.Controllers
     {
         public IActionResult GetArticle()
         {
-            // get view model from service
+            // get domain model from service
             // turn into a view model
+            var domModel = new ArticleDomainModel {Title = "Killer tomatoes! From Space!"};
             
-            var model = new ArticleViewModel { Title = "Killer tomatoes! From Space!"};
+            var model = new ArticleViewModel { Title = domModel.Title};
             
             return View("Article", model);
         }

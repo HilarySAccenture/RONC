@@ -5,26 +5,6 @@ namespace RONC.UnitTest.FrontEndTests
 {
     public class RONCWebDriver
     {
-        private static RONCWebDriver instance;
-        
-        public static RONCWebDriver GetRONCWebDriver()
-        {
-            if (instance == null)
-            {
-                instance = new RONCWebDriver();
-            }
-
-            return instance;
-        }
-
-        public RONCWebDriver()
-        {
-            var driverName = GetGeckoDriverName();
-            Driver = CreateFireFoxDriver();
-        }
-        
-        public FirefoxDriver Driver { get; set; }
-
         private static string GetGeckoDriverName()
         {
             var remoteFileName = Environment.GetEnvironmentVariable("TravisWebDriver");
