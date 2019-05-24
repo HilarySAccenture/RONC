@@ -10,11 +10,11 @@ dotnet: 2.2
 git:
   depth: false
 script: # These commands are executed in the Travis VM just like you would on your local machine
-  - cd /home/travis/build/HilarySAccenture/RONC/Scripts/
-  #- cd /home/travis/build/HilarySAccenture/RONC/RONC/
-  #- dotnet build
-  - ./RunAllTests
-  - ./CleanUp
+  #- cd /home/travis/build/HilarySAccenture/RONC/Scripts/
+  - cd /home/travis/build/HilarySAccenture/RONC/RONC/
+  - dotnet build
+  #- ./RunAllTests
+  #- ./CleanUp
 deploy:
   provider: azure_web_apps
   verbose: true
