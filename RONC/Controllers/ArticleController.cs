@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using RONC.Domain;
 using RONC.Domain.Models;
@@ -12,11 +13,20 @@ namespace RONC.Controllers
         {
             // get domain model from service
             // turn into a view model
-            var domModel = _newsService.GetArticle();
+            ArticleDomainModel domModel = null;
+            var viewModel = new ArticleViewModel();
             
-            var model = new ArticleViewModel { Title = domModel.Title};
+            try
+            {
+                domModel = _newsService.GetArticle();
+                viewModel.Title = domModel.Title;
+            }
+            catch (Exception e)
+            {
+                viewModel.Title = e.Message;
+            }
             
-            return View("Article", model);
+            return View("Article", viewModel);
         }
     }
 }

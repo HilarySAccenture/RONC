@@ -25,7 +25,7 @@ namespace RONC.UnitTest.FrontEndTests
                 Environment.CurrentDirectory,
                 driverName);
             var options = new FirefoxOptions();
-          //  options.AddArgument("--headless");
+            options.AddArgument("--headless");
             var driver = new FirefoxDriver(service, options, TimeSpan.FromMinutes(3));
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
             return driver;
