@@ -11,7 +11,7 @@ namespace RONC.Controllers
             // get view model from service
             // turn into a view model
             
-            var model = new ArticleViewModel { Title = "Article for you"};
+            var model = new ArticleViewModel { Title = "Killer tomatoes! From Space!"};
             
             return View("Article", model);
         }

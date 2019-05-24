@@ -33,5 +33,29 @@ namespace RONC.UnitTest
             
             title.ShouldContain("Article for you");
         }
+        
+        [Fact]
+        public void ReturnArticleViewWithArticleTitle()
+        {
+            FirefoxDriver driver = null;
+            var title = string.Empty;
+            try
+            {
+                driver = IndexShould.CreateFireFoxDriver();
+                driver.Navigate().GoToUrl("http://localhost:5000/article/getarticle");
+
+                title = driver.FindElementById("articleTitle").Text;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                driver.Quit();
+            }
+            
+            title.ShouldContain("Killer tomatoes! From Space!");
+        }
     }
 }
