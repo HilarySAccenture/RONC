@@ -1,13 +1,13 @@
 using System;
-using OpenQA.Selenium;
-using Xunit;
 using OpenQA.Selenium.Firefox;
 using Shouldly;
+using Xunit;
 
-namespace RONC.UnitTest
+namespace RONC.UnitTest.FrontEndTests
 {
     public class IndexShould
     {
+        private FirefoxDriver driver = CreateFireFoxDriver();
         private static string _geckoDriver = GetGeckoDriverName();
 
         public static string GetGeckoDriverName()
@@ -37,7 +37,6 @@ namespace RONC.UnitTest
         public void RenderAParagraphTag()
         {
             var pCount = 0;
-            FirefoxDriver driver = null;
             try
             {
                 driver = CreateFireFoxDriver();
@@ -62,7 +61,6 @@ namespace RONC.UnitTest
         public void RenderCorrectTextInParagraphTag()
         {
             var pText = string.Empty;
-            FirefoxDriver driver = null;
 
             try
             {
@@ -87,7 +85,6 @@ namespace RONC.UnitTest
         public void RenderAButton()
         {
             var buttonText = string.Empty;
-            FirefoxDriver driver = null;
 
             try
             {
@@ -111,7 +108,6 @@ namespace RONC.UnitTest
         [Fact]
         public void ReturnAnArticleView()
         {
-            FirefoxDriver driver = null;
             var page = string.Empty;
 
             try

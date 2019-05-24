@@ -3,17 +3,16 @@ using OpenQA.Selenium.Firefox;
 using Shouldly;
 using Xunit;
 
-namespace RONC.UnitTest
+namespace RONC.UnitTest.FrontEndTests
 {
     public class ArticleShould
     {
         private string _geckoDriver = IndexShould.GetGeckoDriverName();
-        
+        private FirefoxDriver driver = IndexShould.CreateFireFoxDriver();
        
         [Fact]
         public void ReturnArticleViewWithGreetingValue()
         {
-            FirefoxDriver driver = null;
             var title = string.Empty;
             try
             {
@@ -37,7 +36,6 @@ namespace RONC.UnitTest
         [Fact]
         public void ReturnArticleViewWithArticleTitle()
         {
-            FirefoxDriver driver = null;
             var title = string.Empty;
             try
             {
