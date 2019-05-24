@@ -4,7 +4,7 @@ using RONC.Domain.DataObject;
 using Shouldly;
 using Xunit;
 
-namespace RONC.UnitTest
+namespace RONC.UnitTest.BackEndTests
 {
     public class ArticleDeserializerShould
     {

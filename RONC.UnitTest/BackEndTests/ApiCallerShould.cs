@@ -1,11 +1,11 @@
 using System.Linq;
+using NSubstitute;
 using RestSharp;
 using RONC.Domain;
-using Xunit;
 using Shouldly;
-using NSubstitute;
+using Xunit;
 
-namespace RONC.UnitTest
+namespace RONC.UnitTest.BackEndTests
 {
     public class ApiCallerShould
     {

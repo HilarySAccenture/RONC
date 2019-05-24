@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using NSubstitute;
 using RONC.Domain;
 using RONC.Domain.DataObject;
-using RONC.Domain.Models;
 using Shouldly;
 using Xunit;
 
-namespace RONC.UnitTest
+namespace RONC.UnitTest.BackEndTests
 {
     public class NewsServiceShould
     {

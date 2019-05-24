@@ -30,7 +30,7 @@ namespace RONC.UnitTest.FrontEndTests
                 Environment.CurrentDirectory,
                 _geckoDriver);
             var options = new FirefoxOptions();
-            //options.AddArgument("--headless");
+            options.AddArgument("--headless");
             return new FirefoxDriver(service, options);
         }
 
