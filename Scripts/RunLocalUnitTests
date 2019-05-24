@@ -1,0 +1,5 @@
+#!/bin/bash
+
+./RunUnitTests
+
+kill $(ps aux | grep '[R]ONC.dll' | awk '{print $2}')

@@ -1,4 +1,5 @@
 using System;
+using OpenQA.Selenium;
 using Xunit;
 using OpenQA.Selenium.Firefox;
 using Shouldly;
@@ -103,6 +104,33 @@ namespace RONC.UnitTest
             }
             
             buttonText.ShouldBe("Get Article");
+        }
+
+        [Fact]
+        public void ReturnAnArticleView()
+        {
+            FirefoxDriver driver = null;
+            var page = string.Empty;
+            
+            try
+            {
+                driver = CreateFireFoxDriver();
+
+                driver.Navigate().GoToUrl("http://localhost:5000/home/index");
+
+                driver.FindElementById("btnGetArticle").Click();
+
+                page = driver.Url;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                driver.Quit();
+            }
+            page.ShouldContain("article");
+            
         }
     }
 }
