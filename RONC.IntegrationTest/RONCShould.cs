@@ -26,9 +26,9 @@ namespace RONC.IntegrationTest
                 indexGreeting = driver.FindElementById("indexGreeting").Text;
                 apiAttribution = driver.FindElementById("apiAttribution").Text;
             }
-            catch (WebDriverException wde)
+            catch (Exception ex)
             {
-                throw wde;
+                throw ex;
             }
             finally
             {
@@ -58,9 +58,9 @@ namespace RONC.IntegrationTest
                 articleTitle = driver.FindElementById("articleTitle").Text;
                 apiAttribution = driver.FindElementById("apiAttribution").Text;
             }
-            catch (WebDriverException wde)
+            catch (Exception ex)
             {
-                throw wde;
+                throw ex;
             }
             finally
             {
@@ -86,9 +86,9 @@ namespace RONC.IntegrationTest
 
                 apiURL = driver.Url;
             }
-            catch (WebDriverException wde)
+            catch (Exception ex)
             {
-                throw wde;
+                throw ex;
             }
             finally
             {

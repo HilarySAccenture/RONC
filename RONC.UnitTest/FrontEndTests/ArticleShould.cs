@@ -21,8 +21,6 @@ namespace RONC.UnitTest.FrontEndTests
             try
             {
                 driver.Navigate().GoToUrl("http://localhost:5000/article/getarticle");
-//                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(
-//                    d => ((IJavaScriptExecutor) d).ExecuteScript("return document.readyState").Equals("complete"));
 
                 title = driver.FindElementById("articleGreeting").Text;
             }
@@ -35,29 +33,6 @@ namespace RONC.UnitTest.FrontEndTests
                 driver.Quit();
             }
             title.ShouldContain("Article for you");
-        }
-        
-        [Fact]
-        public void ReturnArticleViewWithArticleTitle()
-        {
-            driver = CreateFireFoxDriver();
-            var title = string.Empty;
-            try
-            {
-                driver.Navigate().GoToUrl("http://localhost:5000/article/getarticle");
-
-                title = driver.FindElementById("articleTitle").Text;
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-                driver.Quit();
-            }
-            
-            title.ShouldNotBeNullOrEmpty();
         }
 
         [Fact]
@@ -73,7 +48,7 @@ namespace RONC.UnitTest.FrontEndTests
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             finally
             {

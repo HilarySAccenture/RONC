@@ -25,6 +25,7 @@ namespace RONC.UnitTest.FrontEndTests
             }
             catch (Exception ex)
             {
+                throw ex;
             }
             finally
             {
@@ -49,6 +50,7 @@ namespace RONC.UnitTest.FrontEndTests
             }
             catch (Exception ex)
             {
+                throw ex;
             }
             finally
             {
@@ -75,6 +77,7 @@ namespace RONC.UnitTest.FrontEndTests
             }
             catch (Exception ex)
             {
+                throw ex;
             }
             finally
             {
@@ -83,7 +86,5 @@ namespace RONC.UnitTest.FrontEndTests
 
             page.ShouldContain("article");
         }
-        
-        
     }
 }

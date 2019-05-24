@@ -11,8 +11,6 @@ namespace RONC.Controllers
         private NewsService _newsService = new NewsService();
         public IActionResult GetArticle()
         {
-            // get domain model from service
-            // turn into a view model
             ArticleDomainModel domModel = null;
             var viewModel = new ArticleViewModel();
             
