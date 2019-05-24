@@ -2,41 +2,20 @@ using System;
 using OpenQA.Selenium.Firefox;
 using Shouldly;
 using Xunit;
-using Xunit.Sdk;
+using static RONC.UnitTest.FrontEndTests.RONCWebDriver;
 
 namespace RONC.UnitTest.FrontEndTests
 {
     public class IndexShould
     {
-        private FirefoxDriver driver = CreateFireFoxDriver();
-        private static string _geckoDriver = GetGeckoDriverName();
-
-        public static string GetGeckoDriverName()
-        {
-            var remoteFileName = Environment.GetEnvironmentVariable("TravisWebDriver");
-            var driverName = "geckodrivermac";
-
-            if (remoteFileName != null)
-            {
-                driverName = remoteFileName;
-            }
-
-            return driverName;
-        }
-
-        public static FirefoxDriver CreateFireFoxDriver()
-        {
-            var service = FirefoxDriverService.CreateDefaultService(
-                Environment.CurrentDirectory,
-                _geckoDriver);
-            var options = new FirefoxOptions();
-            options.AddArgument("--headless");
-            return new FirefoxDriver(service, options);
-        }
+        
+        private FirefoxDriver driver;
 
         [Fact]
         public void RenderAParagraphTag()
         {
+            driver = CreateFireFoxDriver();
+            
             var pCount = 0;
             try
             {
@@ -59,6 +38,8 @@ namespace RONC.UnitTest.FrontEndTests
         [Fact]
         public void RenderCorrectTextInParagraphTag()
         {
+            driver = CreateFireFoxDriver();
+            
             var pText = string.Empty;
 
             try
@@ -81,6 +62,8 @@ namespace RONC.UnitTest.FrontEndTests
         [Fact]
         public void RenderAButton()
         {
+            driver = CreateFireFoxDriver();
+            
             var buttonText = string.Empty;
 
             try
@@ -103,6 +86,8 @@ namespace RONC.UnitTest.FrontEndTests
         [Fact]
         public void ReturnAnArticleView()
         {
+            driver = CreateFireFoxDriver();
+            
             var page = string.Empty;
 
             try

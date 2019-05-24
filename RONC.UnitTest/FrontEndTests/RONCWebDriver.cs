@@ -17,15 +17,15 @@ namespace RONC.UnitTest.FrontEndTests
             return instance;
         }
 
-        private RONCWebDriver()
+        public RONCWebDriver()
         {
             var driverName = GetGeckoDriverName();
-            Driver = CreateFireFoxDriver(driverName);
+            Driver = CreateFireFoxDriver();
         }
         
         public FirefoxDriver Driver { get; set; }
 
-        private string GetGeckoDriverName()
+        private static string GetGeckoDriverName()
         {
             var remoteFileName = Environment.GetEnvironmentVariable("TravisWebDriver");
             var driverName = "geckodrivermac";
@@ -38,14 +38,15 @@ namespace RONC.UnitTest.FrontEndTests
             return driverName;
         }
 
-        private static FirefoxDriver CreateFireFoxDriver(string driverName)
+        public static FirefoxDriver CreateFireFoxDriver()
         {
+            var driverName = GetGeckoDriverName();
             var service = FirefoxDriverService.CreateDefaultService(
                 Environment.CurrentDirectory,
                 driverName);
             var options = new FirefoxOptions();
-            //options.AddArgument("--headless");
-            return new FirefoxDriver(service, options);
+            options.AddArgument("--headless");
+            return new FirefoxDriver(service, options, TimeSpan.FromMinutes(3));
         }
     }
 }

@@ -2,17 +2,19 @@ using System;
 using OpenQA.Selenium.Firefox;
 using Shouldly;
 using Xunit;
+using static RONC.UnitTest.FrontEndTests.RONCWebDriver;
 
 namespace RONC.UnitTest.FrontEndTests
 {
+    
     public class ArticleShould
     {
-        private string _geckoDriver = IndexShould.GetGeckoDriverName();
-        private FirefoxDriver driver = IndexShould.CreateFireFoxDriver();
-       
+        private FirefoxDriver driver;
+
         [Fact]
         public void ReturnArticleViewWithGreetingValue()
         {
+            driver = CreateFireFoxDriver();
             var title = string.Empty;
             try
             {
@@ -35,6 +37,7 @@ namespace RONC.UnitTest.FrontEndTests
         [Fact]
         public void ReturnArticleViewWithArticleTitle()
         {
+            driver = CreateFireFoxDriver();
             var title = string.Empty;
             try
             {
