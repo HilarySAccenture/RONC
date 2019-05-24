@@ -71,8 +71,33 @@ namespace RONC.IntegrationTest
             articleTitle.ShouldNotBeNullOrEmpty();
             apiAttribution.ShouldContain("newsapi.org");
         }
+        
+        [Fact]
+        public void NavigateToApiUrlThroughAttributionLink()
+        {
+            var driver = CreateFirefoxDriver();
 
-        //includes attribute link 
+            var apiURL = string.Empty;
+
+            try
+            {
+                driver.Navigate().GoToUrl("http://localhost:8000");
+                driver.FindElementById("apiAttribution").Click();
+
+                apiURL = driver.Url;
+            }
+            catch (WebDriverException wde)
+            {
+                throw wde;
+            }
+            finally
+            {
+                driver.Quit();
+            }
+
+            apiURL.ShouldContain("newsapi.org");
+        }
+
 
         private static string GetGeckoDriverName()
         {
