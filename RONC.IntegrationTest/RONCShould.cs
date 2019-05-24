@@ -13,50 +13,90 @@ namespace RONC.IntegrationTest
         private static string _fileName = GetGeckoDriverName();
 
         [Fact]
-        public void DisplayExpectedText()
+        public void DisplayExpectedTextInIndex()
         {
-            var currentDirectory = Environment.CurrentDirectory;
-            var options = new FirefoxOptions();
-            options.AddArgument("--headless");
-            Console.WriteLine($"this is the {_fileName}");
-            Console.WriteLine(Environment.GetEnvironmentVariable("NEWS_API_KEY"));
-            
-            var service = FirefoxDriverService.CreateDefaultService(currentDirectory, _fileName);
-            var driver = new FirefoxDriver(service, options);
+            var driver = CreateFirefoxDriver();
 
-            var result = string.Empty;
-            
+            var indexGreeting = string.Empty;
+            var apiAttribution = string.Empty;
+
             try
             {
                 driver.Navigate().GoToUrl("http://localhost:8000");
-                var pElement = driver.FindElementByTagName("p");
-
-                result = pElement.Text;
-                
+                indexGreeting = driver.FindElementById("indexGreeting").Text;
+                apiAttribution = driver.FindElementById("apiAttribution").Text;
             }
             catch (WebDriverException wde)
             {
-                
+                throw wde;
             }
             finally
             {
                 driver.Quit();
             }
 
-            Console.WriteLine(result);
-            result.ShouldContain("Hello World!");
+            indexGreeting.ShouldContain("Hello World!");
+            apiAttribution.ShouldContain("newsapi.org");
         }
+
+
+        [Fact]
+        public void GetArticleButtonReturnsArticle()
+        {
+            var driver = CreateFirefoxDriver();
+
+            var articleGreeting = string.Empty;
+            var articleTitle = string.Empty;
+            var apiAttribution = string.Empty;
+
+            try
+            {
+                driver.Navigate().GoToUrl("http://localhost:8000");
+                driver.FindElementById("btnGetArticle").Click();
+
+                articleGreeting = driver.FindElementById("articleGreeting").Text;
+                articleTitle = driver.FindElementById("articleTitle").Text;
+                apiAttribution = driver.FindElementById("apiAttribution").Text;
+            }
+            catch (WebDriverException wde)
+            {
+                throw wde;
+            }
+            finally
+            {
+                driver.Quit();
+            }
+
+            articleGreeting.ShouldContain("article for you");
+            articleTitle.ShouldNotBeNullOrEmpty();
+            apiAttribution.ShouldContain("newsapi.org");
+        }
+
+        //includes attribute link 
 
         private static string GetGeckoDriverName()
         {
             var remoteFileName = Environment.GetEnvironmentVariable("TravisWebDriver");
             var driverName = "geckodrivermac";
-            
+
             if (remoteFileName != null)
             {
                 driverName = remoteFileName;
             }
+
             return driverName;
+        }
+
+        private static FirefoxDriver CreateFirefoxDriver()
+        {
+            var currentDirectory = Environment.CurrentDirectory;
+            var options = new FirefoxOptions();
+            options.AddArgument("--headless");
+
+            var service = FirefoxDriverService.CreateDefaultService(currentDirectory, _fileName);
+            var driver = new FirefoxDriver(service, options);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(1);
+            return driver;
         }
     }
 }

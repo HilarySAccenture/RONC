@@ -8,32 +8,7 @@ namespace RONC.UnitTest.FrontEndTests
 {
     public class IndexShould
     {
-        
         private FirefoxDriver driver;
-
-        [Fact]
-        public void RenderAParagraphTag()
-        {
-            driver = CreateFireFoxDriver();
-            
-            var pCount = 0;
-            try
-            {
-                driver.Navigate().GoToUrl("http://localhost:5000/home/index");
-
-                pCount = driver.FindElementsByTagName("p").Count;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                driver.Quit();
-            }
-
-            pCount.ShouldBe(1);
-        }
 
         [Fact]
         public void RenderCorrectTextInParagraphTag()
@@ -46,7 +21,7 @@ namespace RONC.UnitTest.FrontEndTests
             {
                 driver.Navigate().GoToUrl("http://localhost:5000/home/index");
 
-                pText = driver.FindElementByTagName("p").Text;
+                pText = driver.FindElementById("indexGreeting").Text;
             }
             catch (Exception ex)
             {

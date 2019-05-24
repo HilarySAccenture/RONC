@@ -24,7 +24,7 @@ namespace RONC.UnitTest.FrontEndTests
 //                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(
 //                    d => ((IJavaScriptExecutor) d).ExecuteScript("return document.readyState").Equals("complete"));
 
-                title = driver.FindElementById("greeting").Text;
+                title = driver.FindElementById("articleGreeting").Text;
             }
             catch (Exception ex)
             {
@@ -69,7 +69,7 @@ namespace RONC.UnitTest.FrontEndTests
             {
                 driver.Navigate().GoToUrl("http://localhost:5000/article/getarticle");
 
-                attribute = driver.FindElementById("apiAttribute").Text;
+                attribute = driver.FindElementById("apiAttribution").Text;
             }
             catch (Exception ex)
             {
