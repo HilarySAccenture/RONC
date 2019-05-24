@@ -2,6 +2,7 @@ using System;
 using OpenQA.Selenium.Firefox;
 using Shouldly;
 using Xunit;
+using Xunit.Sdk;
 
 namespace RONC.UnitTest.FrontEndTests
 {
@@ -29,7 +30,7 @@ namespace RONC.UnitTest.FrontEndTests
                 Environment.CurrentDirectory,
                 _geckoDriver);
             var options = new FirefoxOptions();
-            options.AddArgument("--headless");
+            //options.AddArgument("--headless");
             return new FirefoxDriver(service, options);
         }
 
@@ -39,8 +40,6 @@ namespace RONC.UnitTest.FrontEndTests
             var pCount = 0;
             try
             {
-                driver = CreateFireFoxDriver();
-
                 driver.Navigate().GoToUrl("http://localhost:5000/home/index");
 
                 pCount = driver.FindElementsByTagName("p").Count;
@@ -64,8 +63,6 @@ namespace RONC.UnitTest.FrontEndTests
 
             try
             {
-                driver = CreateFireFoxDriver();
-
                 driver.Navigate().GoToUrl("http://localhost:5000/home/index");
 
                 pText = driver.FindElementByTagName("p").Text;
@@ -88,8 +85,6 @@ namespace RONC.UnitTest.FrontEndTests
 
             try
             {
-                driver = CreateFireFoxDriver();
-
                 driver.Navigate().GoToUrl("http://localhost:5000/home/index");
 
                 buttonText = driver.FindElementById("btnGetArticle").Text;
@@ -112,8 +107,6 @@ namespace RONC.UnitTest.FrontEndTests
 
             try
             {
-                driver = CreateFireFoxDriver();
-
                 driver.Navigate().GoToUrl("http://localhost:5000/home/index");
 
                 driver.FindElementById("btnGetArticle").Click();
@@ -130,5 +123,7 @@ namespace RONC.UnitTest.FrontEndTests
 
             page.ShouldContain("article");
         }
+        
+        
     }
 }

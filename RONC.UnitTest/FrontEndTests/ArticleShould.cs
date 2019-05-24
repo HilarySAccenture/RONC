@@ -16,7 +16,6 @@ namespace RONC.UnitTest.FrontEndTests
             var title = string.Empty;
             try
             {
-                driver = IndexShould.CreateFireFoxDriver();
                 driver.Navigate().GoToUrl("http://localhost:5000/article/getarticle");
 
                 title = driver.FindElementById("greeting").Text;
@@ -39,7 +38,6 @@ namespace RONC.UnitTest.FrontEndTests
             var title = string.Empty;
             try
             {
-                driver = IndexShould.CreateFireFoxDriver();
                 driver.Navigate().GoToUrl("http://localhost:5000/article/getarticle");
 
                 title = driver.FindElementById("articleTitle").Text;
