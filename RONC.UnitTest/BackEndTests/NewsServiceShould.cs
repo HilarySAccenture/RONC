@@ -43,5 +43,18 @@ namespace RONC.UnitTest.BackEndTests
 
             Should.Throw<Exception>(() => service.GetArticle()).Message.ShouldBe("Response was null or empty");
         }
+
+        [Fact]
+        public void ReturnFirstArticleIfReceivesMoreThanOneArticle()
+        {
+            var mockApiReturn1 = new ApiDataResponse {Title = "Bob"};
+            var mockApiReturn2 = new ApiDataResponse {Title = "Ross"};
+            mockDeserializer.Convert(Arg.Any<string>()).Returns(new List<ApiDataResponse> {mockApiReturn1, mockApiReturn2});
+            var service = new NewsService(mockCaller, mockDeserializer); 
+            
+            var result = service.GetArticle();
+
+            result.Title.ShouldBe("Bob");
+        }
     }
 }

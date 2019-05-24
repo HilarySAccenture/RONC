@@ -17,6 +17,12 @@ namespace RONC.Domain
             _deserializer = deserializer;
         }
 
+        public NewsService()
+        {
+            _caller = new ApiCaller();
+            _deserializer = new ArticleDeserializer();
+        }
+
         public ArticleDomainModel GetArticle()
         {
             var resultString = _caller.GetArticlesAsJson();

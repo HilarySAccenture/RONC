@@ -7,11 +7,12 @@ namespace RONC.Controllers
 {
     public class ArticleController : Controller
     {
+        private NewsService _newsService = new NewsService();
         public IActionResult GetArticle()
         {
             // get domain model from service
             // turn into a view model
-            var domModel = new ArticleDomainModel {Title = "Killer tomatoes! From Space!"};
+            var domModel = _newsService.GetArticle();
             
             var model = new ArticleViewModel { Title = domModel.Title};
             
