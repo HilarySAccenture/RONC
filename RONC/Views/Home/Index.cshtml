@@ -1,9 +1,11 @@
 @{
     ViewBag.Title = "Hello";
+    Layout = "_Layout";
 }
 
 <h2>Impressive Title</h2>
 <p>
     Hello World!
 </p>
-<button onclick="@Url.Action("GetArticle","Article")"type="button" id="btnGetArticle">Get Article</button>
+
+<button onclick="window.location.href = '@Url.Action("GetArticle","Article")'" type="button" id="btnGetArticle">Get Article</button>
